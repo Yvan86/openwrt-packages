@@ -20,15 +20,14 @@ on:
         description: 'SSH connection to Actions?'
         required: false
         default: 'false'   
-      input-config:
-        description: 'Which config file should be used?'
-        required: linux-meson64-current.config
-        default: 'linux-meson64-current.config' 
+      def-conf:
+        description: 'If use default config file?'
+        required: false
+        default: 'false' 
         
 env:
   REPO_URL: https://github.com/armbian/build
   REPO_BRANCH: master
-  CONFIG_FILE: github.event.inputs.input-config
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
   UPLOAD_BIN_DIR: false
@@ -66,11 +65,18 @@ jobs:
         git clone --depth 1 $REPO_URL -b $REPO_BRANCH armbian
         ln -sf /workdir/armbian $GITHUB_WORKSPACE/armbian
         
-    - name: Load custom configuration
+    - name: Load custom configuration 1
       run: |
         [ -e files ] && mv files armbian/files
         mkdir -p $GITHUB_WORKSPACE/armbian/userpatches
-        sudo cp -b $GITHUB_WORKSPACE/userpatches/linux-meson64-current.config $GITHUB_WORKSPACE/armbian/userpatches/linux-meson64-current.config
+        
+    - name: Load custom configuration 2
+      if: (github.event.inputs.def-conf == 'false')    
+      run: |
+       sudo cp -b $GITHUB_WORKSPACE/userpatches/linux-meson64-current.config $GITHUB_WORKSPACE/armbian/userpatches/linux-meson64-current.config
+        
+    - name: Load custom configuration 3
+      run: |
         sudo cp -b $GITHUB_WORKSPACE/userpatches/config-example.conf $GITHUB_WORKSPACE/armbian/userpatches/config-example.conf
         sudo cp -b $GITHUB_WORKSPACE/userpatches/lib.config $GITHUB_WORKSPACE/armbian/userpatches/lib.config
         sudo ln -fs $GITHUB_WORKSPACE/armbian/userpatches/config-example.conf $GITHUB_WORKSPACE/armbian/userpatches/config-default.conf
