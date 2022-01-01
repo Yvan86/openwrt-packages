@@ -22,8 +22,8 @@ on:
         default: 'false'   
       input-config:
         description: 'Which config file should be used?'
-        required: false
-        default: 'false' 
+        required: linux-meson64-current.config
+        default: 'linux-meson64-current.config' 
         
 env:
   REPO_URL: https://github.com/armbian/build
