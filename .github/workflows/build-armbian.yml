@@ -73,7 +73,7 @@ jobs:
     - name: Load custom configuration 2
       if: (github.event.inputs.config-file != '0')    
       run: |
-       sudo cp -b $GITHUB_WORKSPACE/userpatches/$(github.event.inputs.config-file).config $GITHUB_WORKSPACE/armbian/userpatches/linux-meson64-current.config
+       sudo cp -b $GITHUB_WORKSPACE/userpatches/${github.event.inputs.config-file}.config $GITHUB_WORKSPACE/armbian/userpatches/linux-meson64-current.config
         
     - name: Load custom configuration 3
       run: |
