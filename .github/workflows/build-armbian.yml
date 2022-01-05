@@ -20,10 +20,10 @@ on:
         description: 'SSH connection to Actions?'
         required: false
         default: 'false'   
-      def-conf:
-        description: 'If use default config file?'
+      config-file:
+        description: 'Which config file is used?'
         required: false
-        default: 'false' 
+        default: '0' 
         
 env:
   REPO_URL: https://github.com/armbian/build
@@ -71,9 +71,9 @@ jobs:
         mkdir -p $GITHUB_WORKSPACE/armbian/userpatches
         
     - name: Load custom configuration 2
-      if: (github.event.inputs.def-conf == 'false')    
+      if: (github.event.inputs.config-file != '0')    
       run: |
-       sudo cp -b $GITHUB_WORKSPACE/userpatches/linux-meson64-current.config $GITHUB_WORKSPACE/armbian/userpatches/linux-meson64-current.config
+       sudo cp -b $GITHUB_WORKSPACE/userpatches/$github.event.inputs.config-file.config $GITHUB_WORKSPACE/armbian/userpatches/linux-meson64-current.config
         
     - name: Load custom configuration 3
       run: |
