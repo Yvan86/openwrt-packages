@@ -100,6 +100,7 @@ jobs:
       run: |
         cd armbian/output
         ls -l ./debs
+        ls -l ./images
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         sudo tar -czvf images.tar.gz images || exit 0
         sudo tar -czvf debug.tar.gz debug || exit 0
