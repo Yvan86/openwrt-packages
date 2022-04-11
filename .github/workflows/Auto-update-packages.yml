@@ -10,10 +10,6 @@ on:
 #      - '.config'
 #  schedule:
 #    - cron: 0 8 * * 5
-  watch:
-    types: started
-    if: github.event.repository.owner.id == github.event.sender.id
-  repository_dispatch:
   workflow_dispatch:
     inputs:
       SSH:
