@@ -1,1 +1,1 @@
-diy1.sh
+pwd
