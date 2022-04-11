@@ -32,7 +32,7 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@master
+      uses: actions/checkout@main
 
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
