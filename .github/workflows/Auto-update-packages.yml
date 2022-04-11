@@ -38,7 +38,8 @@ jobs:
         DEBIAN_FRONTEND: noninteractive
       run: |
         sudo timedatectl set-timezone "$TZ"
-        rm -rf !(README.md|diy1.sh)
+        pwd
+#        rm -rf !(README.md|diy1.sh)
       
     - name: Commit
       run: |
