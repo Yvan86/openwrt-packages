@@ -44,10 +44,13 @@ jobs:
         sudo -E apt-get -qq autoremove --purge
         sudo -E apt-get -qq clean
         sudo timedatectl set-timezone "$TZ"
-        sudo chown $USER:$GROUPS ./workspace
-              
+        sudo mkdir -p /workdir
+        sudo chown $USER:$GROUPS /workdir
+     
     - name: Load custom configuration
+      working-directory: /workdir
       run: |
+        df -hT $PWD
         chmod +x $DIY1_SH
         ./workspace/$DIY1_SH
         
