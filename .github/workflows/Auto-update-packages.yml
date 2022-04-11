@@ -49,6 +49,7 @@ jobs:
      
     - name: Load custom configuration
       run: |
+        chmod +x $DIY1_SH
         ./$DIY1_SH
         
     - name: SSH connection to Actions
