@@ -51,8 +51,8 @@ jobs:
       working-directory: /workdir
       run: |
         df -hT $PWD
-        chmod +x $DIY1_SH
-        ./workspace/$DIY1_SH
+#        chmod +x $DIY1_SH
+#        ./workspace/$DIY1_SH
         
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
