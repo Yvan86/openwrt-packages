@@ -34,11 +34,10 @@ jobs:
       if: (github.event.inputs.SSH == 'true' || github.event.inputs.SSH  == '1') 
       
     - name: Initialization environment
-      env:
-        DEBIAN_FRONTEND: noninteractive
+#      env:
+#        DEBIAN_FRONTEND: noninteractive
       run: |
         sudo timedatectl set-timezone "$TZ"
-        chmod +x diy1.sh
         source diy1.sh
       
     - name: Commit
