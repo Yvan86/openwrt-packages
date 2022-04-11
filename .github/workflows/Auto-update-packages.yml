@@ -44,12 +44,12 @@ jobs:
         sudo -E apt-get -qq autoremove --purge
         sudo -E apt-get -qq clean
         sudo timedatectl set-timezone "$TZ"
-        sudo chown $USER:$GROUPS GITHUB_WORKSPACE
+        sudo chown $USER:$GROUPS ./workspace
               
     - name: Load custom configuration
       run: |
         chmod +x $DIY1_SH
-        $GITHUB_WORKSPACE/$DIY1_SH
+        ./workspace/$DIY1_SH
         
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
