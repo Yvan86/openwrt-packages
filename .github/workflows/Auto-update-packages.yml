@@ -39,7 +39,6 @@ jobs:
       run: |
         sudo timedatectl set-timezone "$TZ"
         pwd
-        rm -rf !(README.md|diy1.sh)
         chmod +x diy1.sh
         ./diy1.sh
       
