@@ -6,3 +6,5 @@ git clone https://github.com/xiaorouji/openwrt-passwall
 svn export https://github.com/xiaorouji/openwrt-passwall/branches/luci/luci-app-passwall
 git clone https://github.com/xiaorouji/openwrt-passwall2
 git clone https://github.com/sirpdboy/luci-app-advanced
+rm -rf ./*/.git
+git rm -r --cache *
